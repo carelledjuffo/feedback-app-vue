@@ -17,6 +17,15 @@
         <div class="modal-body">
           <form class="form-form">
             <div class="form-group">
+              <label for="commentTitle">Name</label>
+              <input
+                  type="text"
+                  class="form-control"
+                  id="commentUser"
+                  v-model="name"
+              />
+            </div>
+            <div class="form-group">
               <label for="commentTitle">Title</label>
               <input
                   type="text"
@@ -59,6 +68,7 @@ export default {
 
   data() {
     return {
+      name: "",
       title: "",
       category: "",
       description: "",
@@ -69,6 +79,7 @@ export default {
     saveFeedback() {
       event.preventDefault();
       let feedback = {
+        name: this.name,
         title: this.title,
         category: this.category,
         description: this.description,
@@ -80,6 +91,7 @@ export default {
     },
     clear() {
       event.preventDefault();
+      this.name = '';
       this.title = '';
       this.category = '';
       this.description = '';

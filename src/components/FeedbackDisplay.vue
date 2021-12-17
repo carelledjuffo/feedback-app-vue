@@ -4,16 +4,14 @@
       <div class="fb-upvote">
         <span class="btn upvote-btn" >
           <span class="arrow-up" @click="upvote++">
-           <svg height="7" width="10" xmlns="http://www.w3.org/2000/svg">
-             <path xmlns="http://www.w3.org/2000/svg" d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd">
-             </path>
-           </svg>
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+           <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+            </svg>
            </span>
          <span> {{ upvote }} </span>
           <span class="arrow-down" @click="upvote--">
-            <svg height="7" width="10" xmlns="http://www.w3.org/2000/svg">
-             <path xmlns="http://www.w3.org/2000/svg" d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd">
-             </path>
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+           <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
            </svg>
            </span>
         </span>
@@ -29,9 +27,12 @@
           <button class="fb-category">
             <span>{{ category }}</span>
           </button>
+          <button class="fb-name">
+            <span>{{ name }}</span>
+          </button>
         </div>
       </div>
-    <!--  <div class="btn-edit">
+     <div class="btn-edit">
         <button class="btn btn-edit" data-target="#editModal" data-toggle="modal">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -39,7 +40,7 @@
               </svg>
             </span>
         </button>
-      </div> -->
+      </div>
       <button class="btn btn-delete" data-target="#deleteModal" data-toggle="modal">
         <span class="btn btn-delete">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -74,8 +75,12 @@ export default {
   props: {
     feedback: {},
   },
+  created() {
+    console.log(this.feedback);
+  },
   data() {
     return {
+      name: this.feedback.name,
       title: this.feedback.title,
       category: this.feedback.category,
       description: this.feedback.description,
@@ -110,10 +115,18 @@ export default {
   font-weight: bold;
 }
 .fb-body {
-  flex: 0 0 66%;
+  flex: 0 0 64%;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+}
+.fb-name{
+  background: #f2f4ff;
+  color:#ad1fea;
+  border-radius: 0.3em;
+  border: none;
+  margin-bottom: 0.3em;
+  margin-left: 1em;
 }
 .fb-category {
   background: #f2f4ff;
@@ -129,11 +142,18 @@ export default {
   font-weight: 630;
 }
 .btn-comment {
-  flex: 0 0 8%;
+  flex: 0 0 10%;
   align-self: center;
+  margin-right: 1%;
 }
 .btn-delete {
-  flex: 0 0 8%;
+  flex: 0 0 2%;
+  align-self: center;
+  box-shadow: none;
+  color: #3a4374;
+}
+.btn-edit {
+  flex: 0 0 2%;
   align-self: center;
   box-shadow: none;
   color: #3a4374;

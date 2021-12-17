@@ -43,6 +43,7 @@
       </div>
       <Comments :feedback="modalData" />
       <DeleteFeedback :id="modalData.id"></DeleteFeedback>
+      <EditFeedback :feedback="modalData"></EditFeedback>
     </div>
   </div>
 </template>
@@ -51,6 +52,7 @@ import AddFeedback from "./AddFeedback.vue";
 import FeedbackDisplay from "./FeedbackDisplay";
 import Comments from "@/components/Comments";
 import DeleteFeedback from "@/components/DeleteFeedback";
+import EditFeedback from "@/components/EditFeedback";
 
 export default {
   name: "App",
@@ -59,6 +61,7 @@ export default {
     AddFeedback,
     FeedbackDisplay,
     Comments,
+    EditFeedback
   },
   data() {
     return {

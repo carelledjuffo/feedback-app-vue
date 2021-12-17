@@ -4,15 +4,15 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add Comment</h5>
+          <div>
+            <p><span class="feedback-username">{{feedback.name}}: </span> {{feedback.description}}</p>
+          </div>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div>
-
-        </div>
         <div class="modal-body">
+
           <div class="others-comment-list">
             <ul v-for="comment in comments" v-bind:key="comment.id">
               <li><span class="others-comment-name">{{comment.name}}: </span> {{comment.description}}</li>
@@ -105,7 +105,7 @@ export default {
 .others-comment-list {
   margin-bottom: 2em;
 }
-.others-comment-name {
+.others-comment-name, .feedback-username {
   font-weight: bold;
 }
 </style>

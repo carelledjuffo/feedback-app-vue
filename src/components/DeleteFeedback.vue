@@ -12,7 +12,7 @@
 
         </div>
         <div class="modal-body">
-          <h2>Delete this feedback?</h2>
+          <h4>Delete this feedback?</h4>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>

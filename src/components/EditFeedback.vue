@@ -59,10 +59,17 @@ export default {
   },
   data() {
     return {
-      title: this.feedback.title,
-      category: this.feedback.category,
-      description: this.feedback.description,
+      title: '',
+      category: '',
+      description: '',
     };
+  },
+  watch: {
+    feedback: function (newVal) {
+         this.title = newVal.title;
+          this.category = newVal.category;
+          this.description = newVal.description
+    }
   },
   methods: {
     saveChanges: function () {
@@ -74,6 +81,11 @@ export default {
 
       }
       this.$store.commit('editFeedback', editData);
+    },
+    clear: function () {
+      this.title = '';
+      this.category = '';
+      this.description = '';
     }
   }
 
@@ -81,5 +93,8 @@ export default {
 </script>
 
 <style scoped>
-
+.btn-submit {
+  background: #3a4374;
+  color: #f2f4ff;
+}
 </style>
