@@ -107,6 +107,9 @@ const store = createStore({
             state.feedbackList[editData.id].title = editData.title;
             state.feedbackList[editData.id].category = editData.category;
             state.feedbackList[editData.id].description = editData.description;
+        },
+        deleteFeedback(state, id) {
+            state.feedbackList.splice(id, 1);
         }
     },
     actions: {

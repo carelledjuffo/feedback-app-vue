@@ -45,7 +45,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger delete-btn" data-dismiss="modal" @click="clear">Close</button>
-          <button type="button" class="btn btn-submit" @click="saveFeedback">Save</button>
+          <button type="button" class="btn btn-submit" @click="saveFeedback" data-dismiss="modal">Save</button>
         </div>
       </div>
     </div>
@@ -126,6 +126,9 @@ export default {
   height: 40px;
 }
 .category-select > option:hover {
+
+}
+option:hover {
   background: #ad1fea;
 }
 .modal {

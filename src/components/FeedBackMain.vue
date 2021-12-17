@@ -42,6 +42,7 @@
         <FeedbackDisplay :feedback="feedback"></FeedbackDisplay>
       </div>
       <Comments :feedback="modalData" />
+      <DeleteFeedback :id="modalData.id"></DeleteFeedback>
     </div>
   </div>
 </template>
@@ -49,10 +50,12 @@
 import AddFeedback from "./AddFeedback.vue";
 import FeedbackDisplay from "./FeedbackDisplay";
 import Comments from "@/components/Comments";
+import DeleteFeedback from "@/components/DeleteFeedback";
 
 export default {
   name: "App",
   components: {
+    DeleteFeedback,
     AddFeedback,
     FeedbackDisplay,
     Comments,
@@ -180,9 +183,7 @@ export default {
   margin-top: 1em;
 }
 .btn-sort:focus{
-  border: none !important;
-  outline: 0 !important;
-
+  box-shadow: none;
 }
 .comment-amount {
   font-weight: 630;
@@ -234,6 +235,12 @@ export default {
 }
 .input-category {
   margin: 1em 1em 1em 1em;
+}
+.dropdown-item:hover{
+  color: #ad1fea;
+}
+.dropdown-item:active{
+  background: #f2f4ff;
 }
 @media only screen and (min-width: 1000px) {
   .main-content {

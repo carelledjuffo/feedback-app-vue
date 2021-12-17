@@ -43,7 +43,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger delete-btn" data-dismiss="modal" @click="clear">Close</button>
-          <button type="button" class="btn btn-submit" @click="saveComment">Save</button>
+          <button type="button" class="btn btn-submit" @click="saveComment" data-dismiss="modal">Save</button>
         </div>
       </div>
     </div>
