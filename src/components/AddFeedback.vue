@@ -137,10 +137,8 @@ export default {
   min-width: 100%;
   height: 40px;
 }
-.category-select > option:hover {
 
-}
-option:hover {
+select option:hover {
   background: #ad1fea;
 }
 .modal {

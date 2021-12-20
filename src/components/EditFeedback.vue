@@ -24,12 +24,9 @@
             </div>
             <div class="form-group">
               <label for="commentCategory">Category</label>
-              <input
-                  type="text"
-                  class="form-control"
-                  id="commentCategory"
-                  v-model="category"
-              />
+              <select  class="category-select"  id="commentCategory" aria-label="Default select example" v-model="category">
+                <option v-for="item in categoryList " v-bind:key="item">{{ item }}</option>
+              </select>
             </div>
             <div class="form-group">
               <label for="CommentDescription">Description</label>
@@ -62,6 +59,7 @@ export default {
       title: '',
       category: '',
       description: '',
+      categoryList: this.$store.state.categoryList,
     };
   },
   watch: {
@@ -96,5 +94,9 @@ export default {
 .btn-submit {
   background: #3a4374;
   color: #f2f4ff;
+}
+.category-select{
+  min-width: 100%;
+  height: 40px;
 }
 </style>

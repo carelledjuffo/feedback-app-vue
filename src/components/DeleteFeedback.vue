@@ -31,7 +31,8 @@ export default {
   },
   methods: {
     deleteFeedback: function () {
-      this.$store.commit('deleteFeedback');
+      console.log(this.id)
+      this.$store.commit('deleteFeedback', this.id);
     }
   }
 }
