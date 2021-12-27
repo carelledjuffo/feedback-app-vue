@@ -104,10 +104,12 @@ export default {
 .feedback-part-noVotes {
   display: flex;
   flex-flow: row;
+  flex: 0 0 84%;
 }
 .feedback-action {
   display: flex;
   flex-flow: row;
+  margin-left: 2%;
 }
 .fb-upvote {
   flex: 0 0 10%;
@@ -121,7 +123,7 @@ export default {
   font-weight: bold;
 }
 .fb-body {
-  flex: 0 0 64%;
+  flex: 0 0 70%;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
@@ -151,15 +153,17 @@ export default {
   flex: 0 0 10%;
   align-self: center;
   margin-right: 1%;
+  display: flex;
+  flex-flow: row;
 }
 .btn-delete {
-  flex: 0 0 2%;
+  flex: 0 0 8%;
   align-self: center;
   box-shadow: none;
   color: #3a4374;
 }
 .btn-edit {
-  flex: 0 0 2%;
+  flex: 0 0 8%;
   align-self: center;
   box-shadow: none;
   color: #3a4374;

@@ -104,10 +104,6 @@ export default {
 .form-group {
   margin-top: 2em;
 }
-.btn-action {
-  display: flex;
-  justify-content: center;
-}
 .delete-btn {
   margin-left: 1em;
 }
@@ -120,7 +116,6 @@ export default {
   margin-bottom: 1em;
   color: white;
   background: #ad1fea;
-  font-weight: 40px;
   box-shadow: none;
 }
 .add-btn:before {
@@ -128,6 +123,8 @@ export default {
   font-size: 20px;
   font-weight: bold;
   color: white;
+  margin-right: 2px;
+  margin-bottom: -6px;
 }
 .add-btn a {
   color: white;
@@ -151,7 +148,7 @@ select option:hover {
   }
   .add-btn:before {
     content: '+ ';
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: white;
   }

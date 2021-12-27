@@ -198,25 +198,7 @@ export default {
   margin-left: 20%;
   margin-right: 20%;
 }
-.features-app-name, .features-category, .features-roadmap {
-  margin-right: 10px;
-  min-height: 178px;
-  width: 100%;
-  border-radius: 10px;
-  background: white;
-  color:#3a4374;
-}
-.features-category {
-  display: flex;
-  justify-content: center;
-  flex-flow: row wrap;
-  margin: 2em 2em 2em 2em;
-}
-.single-category {
-  background: #f2f4ff;
-  color: #4661e6;
-  border-radius: 0.5em;
-}
+
 .dropdown-toggle::after:active {
   transition: transform 1s ease-in;
   transform: rotateX(180deg);
@@ -245,6 +227,11 @@ export default {
     height: 100%;
     margin-bottom: 10%;
   }
+  .comment-header {
+    height: 80px;
+    min-width: 100%;
+  }
+
 }
 
 </style>
