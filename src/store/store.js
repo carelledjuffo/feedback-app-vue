@@ -1,3 +1,4 @@
+import { myPlugin } from "@/store/plugin";
 export const dataStore = {
     state: {
         feedbackList: [
@@ -115,7 +116,6 @@ export const dataStore = {
                     state.feedbackList[index].category = editData.category;
                     state.feedbackList[index].description = editData.description;
                     console.log(state.feedbackList);
-
                 }
             })
 
@@ -129,9 +129,26 @@ export const dataStore = {
                 }
             });
 
+        },
+        incrementUpvote(state, id) {
+            state.feedbackList.forEach(feedback => {
+                if(feedback.id == id) {
+                    let index = state.feedbackList.indexOf(feedback);
+                    state.feedbackList[index].upvote++;
+                }
+            });
+        },
+        decrementUpvote(state, id) {
+            state.feedbackList.forEach(feedback => {
+                if(feedback.id == id) {
+                    let index = state.feedbackList.indexOf(feedback);
+                    state.feedbackList[index].upvote--;
+                }
+            });
         }
     },
     actions: {},
     getters: {},
-    modules: {}
+    modules: {},
+    plugins:[ myPlugin ]
 }

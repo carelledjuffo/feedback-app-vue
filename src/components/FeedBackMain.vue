@@ -21,7 +21,7 @@
         <p class="comment-amount">{{ sortedList.length }} Suggestions</p>
         <div class="dropdown">
           <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort: {{sortingMessage}}
+            {{sortingMessage}}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" @click="classify=1">Most Upvotes</a>
@@ -31,7 +31,7 @@
             <input placeholder="category" class="input-category" @mouseleave="classify=5" v-model="category">
           </div>
         </div>
-        <AddFeedback >Add Feedback</AddFeedback>
+        <AddFeedback >Add</AddFeedback>
       </div>
       <div
           v-for="feedback in sortedList"
@@ -67,8 +67,14 @@ export default {
     return {
       classify: 1,
       modalData: {},
-      category: ''
+      category: '',
+      fbl: this.$store.state.feedbackList
     };
+  },
+  watch: {
+    fbl: function (newVal) {
+      console.log(newVal);
+    }
   },
   computed: {
     sortingMessage: function () {
@@ -111,46 +117,24 @@ export default {
     },
     sortByVotes(sortingMethod) {
       let tempList = [...this.$store.state.feedbackList]
-      for(let i=0; i < tempList.length; i++) {
-        for(let j=i+1; j < tempList.length; j++) {
+        tempList.sort(function (feedbackA, feedbackB) {
           if(sortingMethod == 'asc') {
-            if(tempList[j].upvote < tempList[i].upvote) {
-              let temp = tempList[i];
-              tempList[i] = tempList[j];
-              tempList[j] = temp;
-            }
+            return feedbackA.upvote - feedbackB.upvote ;
+          } else {
+            return feedbackB.upvote - feedbackA.upvote;
           }
-          if(sortingMethod == 'dsc') {
-            if(tempList[j].upvote > tempList[i].upvote) {
-              let temp = tempList[i];
-              tempList[i] = tempList[j];
-              tempList[j] = temp;
-            }
-          }
-        }
-      }
+        });
       return tempList;
     },
     sortByComment(sortingMethod) {
       let tempList = [...this.$store.state.feedbackList]
-      for(let i=0; i < tempList.length; i++) {
-        for(let j=i+1; j < tempList.length; j++) {
-          if(sortingMethod == 'asc') {
-            if(tempList[j].commentList.length < tempList[i].commentList.length) {
-              let temp = tempList[i];
-              tempList[i] = tempList[j];
-              tempList[j] = temp;
-            }
-          }
-          if(sortingMethod == 'dsc') {
-            if(tempList[j].commentList.length > tempList[i].commentList.length) {
-              let temp = tempList[i];
-              tempList[i] = tempList[j];
-              tempList[j] = temp;
-            }
-          }
+      tempList.sort(function (feedbackA, feedbackB) {
+        if(sortingMethod == 'asc') {
+          return feedbackA.commentList.length - feedbackB.commentList.length ;
+        } else {
+          return feedbackB.commentList.length - feedbackA.commentList.length ;
         }
-      }
+      });
       return tempList;
     },
     sortByCategory(category) {
@@ -178,11 +162,10 @@ export default {
   justify-content: space-around;
 }
 .comment-main-display {
-  flex: 0 0 64%;
+  flex: 0 0 94%;
 }
 .btn-sort, .btn-sort:hover {
   color: #fff;
-  align-self: center;
   margin-top: 1em;
 }
 .btn-sort:focus{
@@ -193,8 +176,9 @@ export default {
 }
 
 .comment-header > p {
-  align-self: center;
   font-size: 1em;
+  align-self: center;
+  margin-top: 7px;
 }
 .single-comment-display {
   transition: transform .1s ease-in;
@@ -211,7 +195,8 @@ export default {
   display: flex;
   justify-content: center;
   flex-flow: column;
-  margin: 2em 5em 5em 5em;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 .features-app-name, .features-category, .features-roadmap {
   margin-right: 10px;
@@ -245,27 +230,21 @@ export default {
 .dropdown-item:active{
   background: #f2f4ff;
 }
-@media only screen and (min-width: 1000px) {
+@media only screen and (max-width: 1200px) {
   .main-content {
-    margin: 2em 30em 2em 30em;
-  }
-  .features {
-    margin-right: 2em;
-  }
-  .main-content {
-    display: flex;
-    justify-content: center;
-    flex-flow: row;
-    margin: 2em 2em 2em 2em;
-  }
-  .features-app-name, .features-category, .features-roadmap {
-    display: flex;
-    flex-flow: row;
-    margin-top: 10px;
-    width: 100%;
-  }
-  *:focus {
-    outline: 0;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 }
+@media only screen and (max-width: 520px) {
+  .main-content {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .comment-header {
+    height: 100%;
+    margin-bottom: 10%;
+  }
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <!-- Button trigger modal -->
   <button type="button" class="btn  add-btn" data-toggle="modal" data-target="#exampleModal">
-    Add Feedback
+    Add
   </button>
 
   <!-- Modal -->
@@ -143,5 +143,18 @@ select option:hover {
 }
 .modal {
   color: black;
+}
+@media only screen and (max-width: 520px) {
+  .add-btn  {
+    display: flex;
+    flex-flow: row;
+  }
+  .add-btn:before {
+    content: '+ ';
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+
 }
 </style>
