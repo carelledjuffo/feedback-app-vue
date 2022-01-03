@@ -112,11 +112,12 @@ export default {
   color: white;
 }
 .add-btn {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 2em;
   color: white;
   background: #ad1fea;
   box-shadow: none;
+  padding-bottom: 2.6em;
 }
 .add-btn:before {
   content: '+ ';

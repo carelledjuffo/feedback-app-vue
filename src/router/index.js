@@ -16,6 +16,16 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/comment/:id",
+    name: "comment",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+        import(/* webpackChunkName: "about" */ "../views/FeedbackComment.vue"),
+    props:true,
+  },
 ];
 
 const router = createRouter({

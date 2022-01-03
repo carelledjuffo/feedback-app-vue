@@ -62,6 +62,9 @@ export default {
       categoryList: this.$store.state.categoryList,
     };
   },
+  created() {
+    console.log(this.feedback);
+  },
   watch: {
     feedback: function (newVal) {
          this.title = newVal.title;
