@@ -1,26 +1,13 @@
 <template>
   <div class="main-content">
-   <!-- <div class="features">
-      <div class="features-app-name"></div>
-      <div class="features-category">
-        <div>
-          <button class="single-category">
-            <span>UI</span>
-          </button>
-        </div>
-        <div class="single-category"><button>UI</button></div>
-        <div class="single-category"><button>UX</button></div>
-        <div class="single-category"><button>Enhancement</button></div>
-        <div class="single-category"><button>Bug</button></div>
-        <div class="single-category"><button>Feature</button></div>
-      </div>
-      <div class="features-roadmap">kk</div>
-    </div> -->
     <div class="comment-main-display">
       <div class="comment-header">
         <p class="comment-amount">{{ sortedList.length }} Suggestions</p>
         <div class="dropdown">
-          <button class="btn btn-sort dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <button class="btn btn-sort dropdown-toggle"
+                  type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
             {{sortingMessage}}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

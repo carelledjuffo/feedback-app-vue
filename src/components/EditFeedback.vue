@@ -22,6 +22,7 @@
                   v-model="title"
               />
             </div>
+            <div class="form-validation">{{ error.title }}</div>
             <div class="form-group">
               <label for="commentCategory">Category</label>
               <select  class="category-select"  id="commentCategory" aria-label="Default select example" v-model="category">
@@ -37,11 +38,12 @@
                   v-model="description"
               ></textarea>
             </div>
+            <div class="form-validation">{{ error.description }}</div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger delete-btn" data-dismiss="modal" >Close</button>
-          <button type="button" class="btn btn-submit" @click="saveChanges" data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-submit" @click="saveChanges">Save</button>
         </div>
       </div>
     </div>
@@ -60,10 +62,11 @@ export default {
       category: '',
       description: '',
       categoryList: this.$store.state.categoryList,
+      error: {
+        title: '',
+        description: '',
+      }
     };
-  },
-  created() {
-    console.log(this.feedback);
   },
   watch: {
     feedback: function (newVal) {
@@ -74,14 +77,25 @@ export default {
   },
   methods: {
     saveChanges: function () {
-      let editData = {
-        id: this.feedback.id,
-        title: this.title,
-        category: this.category,
-        description: this.description
+      this.validation();
+      if(this.title && this.category && this.description) {
+        let editData = {
+          id: this.feedback.id,
+          title: this.title,
+          category: this.category,
+          description: this.description
 
+        }
+        this.$store.commit('editFeedback', editData);
       }
-      this.$store.commit('editFeedback', editData);
+    },
+    validation: function () {
+      if(!this.name) {
+        this.error.name = "Name is required"
+      }
+      if(!this.description) {
+        this.error.description = "Description is required";
+      }
     },
     clear: function () {
       this.title = '';
@@ -101,5 +115,8 @@ export default {
 .category-select{
   min-width: 100%;
   height: 40px;
+}
+.form-validation {
+  color: red;
 }
 </style>

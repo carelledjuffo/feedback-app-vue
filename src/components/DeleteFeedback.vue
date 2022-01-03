@@ -9,14 +9,13 @@
           </button>
         </div>
         <div>
-
         </div>
         <div class="modal-body">
           <h4>Delete this feedback?</h4>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" @click="deleteFeedback" data-dismiss="modal">Save</button>
+          <button type="button" class="btn btn-submit" @click="deleteFeedback" data-dismiss="modal">Save</button>
         </div>
       </div>
     </div>
@@ -41,6 +40,10 @@ export default {
 <style scoped>
 .btn-close {
   background: #ad1fea;
+  color: white;
+}
+.btn-submit {
+  background: #3a4374;
   color: white;
 }
 </style>

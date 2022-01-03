@@ -11,11 +11,14 @@
     <div class="feedback-feedback-display">
       <FeedbackDisplay :feedback="feedback"></FeedbackDisplay>
     </div>
-    <div class="feedback-feedback-comments">
+    <div class="feedback-feedback-comments" v-show="feedback.commentList.length">
       <div class="no-of-comments">
-        <span>{{feedback.commentList.length}} Comments</span>
+        <span>{{feedback.commentList.length}}
+          Comment{{feedback.commentList.length == 1 ?'' : 's'}}</span>
       </div>
-      <div class="feedback-comments" v-for="comment in feedback.commentList" v-bind:key="comment.id">
+      <div class="feedback-comments"
+           v-for="comment in feedback.commentList"
+           v-bind:key="comment.id">
         <div class="feedback-comment-name">{{comment.name}}</div>
         <div class="feedback-comment-content">{{comment.description}}</div>
         <hr v-show="comment.id < feedback.commentList.length">
@@ -33,6 +36,7 @@
               v-model="name"
           />
         </div>
+        <div class="form-validation">{{error.name}}</div>
         <div class="form-group">
           <label for="cDescription">Description</label>
           <textarea
@@ -42,6 +46,7 @@
               v-model="description"
           ></textarea>
         </div>
+        <div class="form-validation">{{error.description}}</div>
         <button class="btn btn-submit" @click="saveComment">Add Comment</button>
       </form>
     </div>
@@ -71,6 +76,10 @@ export default {
       description:'',
       comments: [],
       feedback: {},
+      error: {
+        name: '',
+        description:'',
+      },
     }
   },
   created() {
@@ -83,17 +92,30 @@ export default {
   },
   methods: {
     saveComment() {
-      let comment = {
-        id:this.feedback.id,
-        name: this.name,
-        description: this.description,
+      this.validation();
+      if(this.name && this.description) {
+        let comment = {
+          id:this.feedback.id,
+          name: this.name,
+          description: this.description,
+        }
+        this.$store.commit('addComment', comment);
+        this.clear();
       }
-      this.$store.commit('addComment', comment);
-      this.clear();
+    },
+    validation: function () {
+      if(!this.name) {
+        this.error.name = "Name is required"
+      }
+      if(!this.description) {
+        this.error.description = "Description is required";
+      }
     },
     clear() {
-      this.name = '',
-      this.description = ''
+      this.name = '';
+      this.description = '';
+      this.error.name = '';
+      this.error.description = '';
     }
   }
 }
@@ -175,6 +197,9 @@ form {
 .feedback-comment-name {
   font-weight: bold;
   color: #3a4374;
+}
+.form-validation {
+  color: red;
 }
 
 @media only screen and (max-width: 520px) {

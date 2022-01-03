@@ -73,12 +73,14 @@ export default {
       category: "",
       description: "",
       categoryList: this.$store.state.categoryList,
+      id:this.$store.state.feedbackList[this.$store.state.feedbackList.length -1] + 1,
     };
   },
   methods: {
     saveFeedback() {
       event.preventDefault();
       let feedback = {
+        id: this.id,
         name: this.name,
         title: this.title,
         category: this.category,
